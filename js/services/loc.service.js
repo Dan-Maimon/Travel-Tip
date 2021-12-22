@@ -1,43 +1,42 @@
+import { storageSrvice } from './storage.service.js'
+
 export const locService = {
     getLocs,
     convertTime,
     enterLoc
 }
 
-let gNextid = 1
+const STORAGE_KEY = 'locsDB'
 
-const locs = [
-    {
+let gNextid = 1
+let gLocs = []
+
+
+function createLoc(locName, pos) {
+    const loc = {
         id: gNextid++,
-        name: 'Greatplace',
-        lat: 32.047104,
-        lng: 34.832384,
-        wheater: null,
-        createdAt: Date.now(),
-        updatedAt: null,
-        marker: null
-    },
-    {
-        id: gNextid++,
-        name: 'gBaba',
-        lat: 32.315748,
-        lng: 34.113354,
+        name: locName,
+        lat: pos.lat,
+        lng: pos.lng,
         wheater: null,
         createdAt: Date.now(),
         updatedAt: null,
         marker: null
     }
+    gLocs.push(loc)
+    storageSrvice.save(STORAGE_KEY, gLocs)
+}
 
-]
 
 function enterLoc(locName, locPos) {
-    console.log(locName, locPos);
+    createLoc(locName, locPos);
 }
 
 function getLocs() {
+    if (!gLocs.length) gLocs = storageSrvice.load(STORAGE_KEY)
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(locs);
+            resolve(gLocs);
         }, 0)
     });
 }

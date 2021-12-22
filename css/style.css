@@ -2,11 +2,31 @@
     box-sizing: border-box;
 }
 
-body{
+body {
     /* margin: 0; */
-    background-color: rgb(207, 100, 50);
+    background-color: rgb(199, 93, 43);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
+}
+
+button {
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-inline-start: 3px;
+    margin-bottom: 7px;
+    background-color: bisque;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color .3s;
+}
+
+button:hover {
+    background-color: #4373b3;
+}
+
+#map {
+    margin-bottom: 10px;
 }
 
 .locations-container {
@@ -17,7 +37,7 @@ body{
 }
 
 .locations-container thead th {
-    background-color: rgb(67, 115, 179);
+    background-color: #4373b3;
     padding: 0.5rem;
 }
 
@@ -25,9 +45,8 @@ body{
     background-color: bisque;
     padding: 0.5rem;
 }
-/* 
-.locations-container tbody td button {
-    width: 15px;
-    width: 15px;
-} */
+
+table input {
+    cursor: pointer;
+}
 
