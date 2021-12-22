@@ -15,7 +15,23 @@
     <button onclick="onPanTo()"class="btn-pan">Pan Map to Tokyo</button>
 
     <p>You are at: <span class="user-pos"></span></p>
-    <p>Locations: <span class="locs"></span></p>
+    <section class="locations-container">
+        <h3>Locations</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                    <th>Weather</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
+                </tr>
+            </thead>
+            <tbody class="locs-container">
+            </tbody>
+        </table>
+    </section>
     
 
     <script type="module" src="js/app.controller.js"></script>
