@@ -8,10 +8,9 @@ export const mapService = {
 }
 
 var gMap;
-
+var gCurrPos = {}
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
-    console.log('InitMap');
     return _connectGoogleApi()
         .then(() => {
             console.log('google available');
@@ -20,7 +19,6 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
                 center: { lat, lng },
                 zoom: 15
             })
-            console.log('Map!', gMap);
 
             let infoWindow = new google.maps.InfoWindow({
                 content: "Click the map to get Lat/Lng!",
@@ -30,6 +28,7 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
             infoWindow.open(gMap);
             gMap.addListener("click", (mapsMouseEvent) => {
                 infoWindow.close();
+                gCurrPos = { lat: mapsMouseEvent.latLng.lat(), lng: mapsMouseEvent.latLng.lng() }
                 infoWindow = new google.maps.InfoWindow({
                     position: mapsMouseEvent.latLng,
                 });
@@ -41,12 +40,14 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
         })
 }
 
+
 function addMarker(loc) {
     var marker = new google.maps.Marker({
         position: loc,
         map: gMap,
         title: 'Hello World!'
     });
+
     return marker;
 }
 

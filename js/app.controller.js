@@ -6,7 +6,8 @@ window.onAddMarker = onAddMarker;
 window.onPanTo = onPanTo;
 window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
-window.onMarkLoc= onMarkLoc;
+window.onMarkLoc = onMarkLoc;
+window.onEnterLoc = onEnterLoc;
 
 function onInit() {
     mapService.initMap()
@@ -72,16 +73,17 @@ function renderLocs(locs) {
     console.log(locs);
     const strHTMLs = [];
     locs.map(loc => {
-
+        const createdAt = locService.convertTime(loc.createdAt)
+        const updatedAt = locService.convertTime(loc.updatedAt)
         strHTMLs.push(`
                 <tr>
                     <td>${loc.name}</td>
                     <td>${loc.lat}</td>
                     <td>${loc.lng}</td>
                     <td>${loc.wheater}</td>
-                    <td>${loc.createdAt}</td>
-                    <td>${loc.updatedAt}</td>
-                   <td><input type="checkbox" onchange="onMarkLoc(${loc.id}, checked)"></td>
+                    <td>${createdAt}</td>
+                    <td>${updatedAt}</td>
+                    <td><input type="checkbox" onchange="onMarkLoc(${loc.id}, checked)"></td>
                 </tr>
         `)
     })
