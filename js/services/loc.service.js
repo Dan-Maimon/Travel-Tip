@@ -13,9 +13,9 @@ const locs = [
         updatedAt: null
     },
     {
-        name: 'Greatplace',
-        lat: 32.047104,
-        lng: 34.832384,
+        name: 'gBaba',
+        lat: 32.315748,
+        lng: 34.113354,
         wheater: null,
         createdAt: null,
         updatedAt: null
@@ -29,6 +29,10 @@ function getLocs() {
             resolve(locs);
         }, 2000)
     });
+}
+
+function getLocs() {
+    return 
 }
 
 
