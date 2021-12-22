@@ -4,11 +4,10 @@ export const mapService = {
     initMap,
     addMarker,
     panTo,
-    clickMap,
-
+    clickMap
 }
 
-let gMap;
+var gMap;
 
 function clickMap() {
     gMap.addListener("click", ev => {
@@ -41,7 +40,7 @@ function ToggleInfoWindow(location) {
 
 }
 
-function initMap(lat = 31.506109831, lng = 34.643250554) {
+function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
     return _connectGoogleApi()
         .then(() => {
@@ -53,7 +52,6 @@ function initMap(lat = 31.506109831, lng = 34.643250554) {
             })
             console.log('Map!', gMap);
         })
-
 }
 
 function addMarker(loc) {
