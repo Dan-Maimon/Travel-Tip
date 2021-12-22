@@ -4,21 +4,9 @@ export const mapService = {
     initMap,
     addMarker,
     panTo,
-    setClickPos
 }
 
 var gMap;
-
-function setClickPos() {
-    gMap.addListener("click", ev => {
-        const clickedPos = { lat: ev.latLng.lat(), lng: ev.latLng.lng() }
-        ToggleInfoWindow(clickedPos)
-    })
-}
-
-function ToggleInfoWindow(location) {
- 
-}
 
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
@@ -32,6 +20,23 @@ function initMap(lat = 32.0749831, lng = 34.9120554) {
                 zoom: 15
             })
             console.log('Map!', gMap);
+
+            let infoWindow = new google.maps.InfoWindow({
+                content: "Click the map to get Lat/Lng!",
+                position: { lat, lng },
+            });
+
+            infoWindow.open(gMap);
+            gMap.addListener("click", (mapsMouseEvent) => {
+                infoWindow.close();
+                infoWindow = new google.maps.InfoWindow({
+                    position: mapsMouseEvent.latLng,
+                });
+                infoWindow.setContent(
+                    JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+                );
+                infoWindow.open(gMap);
+            });
         })
 }
 
