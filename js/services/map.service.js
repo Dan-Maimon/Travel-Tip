@@ -4,12 +4,12 @@ export const mapService = {
     initMap,
     addMarker,
     panTo,
-    clickMap
+    setClickPos
 }
 
 var gMap;
 
-function clickMap() {
+function setClickPos() {
     gMap.addListener("click", ev => {
         const clickedPos = { lat: ev.latLng.lat(), lng: ev.latLng.lng() }
         ToggleInfoWindow(clickedPos)
@@ -17,28 +17,9 @@ function clickMap() {
 }
 
 function ToggleInfoWindow(location) {
-    // Create the initial InfoWindow.
-    let infoWindow = new google.maps.InfoWindow({
-        content:  JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2),
-        position: location,
-    });
-    
-    // infoWindow.open(gMap);
-    // // Configure the click listener.
-    // gMap.addListener("click", (mapsMouseEvent) => {
-    //     // Close the current InfoWindow.
-    //     infoWindow.close();
-    //     // Create a new InfoWindow.
-    //     infoWindow = new google.maps.InfoWindow({
-    //         position: location,
-    //     });
-    //     infoWindow.setContent(
-    //         JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-    //     );
-    //     infoWindow.open(gMap);
-    // });
-
+ 
 }
+
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
