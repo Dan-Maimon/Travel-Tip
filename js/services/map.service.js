@@ -4,38 +4,18 @@ export const mapService = {
     initMap,
     addMarker,
     panTo,
-<<<<<<< HEAD
     clickMap
-=======
-    clickMap,
-
->>>>>>> 60002b5084c6d6ebc519a9721bd2cce84ed6adf7
 }
 
-let gMap;
+var gMap;
 
-<<<<<<< HEAD
 function clickMap(){
     console.log('gMap:', gMap);
+    console.log();
+    
 }
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
-=======
-function clickMap() {
-    let myLatlng;
-    gMap.addListener('click', ev => {
-        myLatlng = { lat: ev.latLng.lat(), lng: ev.latLng.lng() }
-    })
-    console.log(myLatlng);
-    // let infoWindow = new google.maps.InfoWindow({
-    //     content: "Click the map to get Lat/Lng!",
-    //     position: myLatlng,
-    //   });
-    //   infoWindow.open(gMap);
-}
-
-function initMap(lat = 31.506109831, lng = 34.643250554) {
->>>>>>> 60002b5084c6d6ebc519a9721bd2cce84ed6adf7
     console.log('InitMap');
     return _connectGoogleApi()
         .then(() => {
@@ -47,7 +27,6 @@ function initMap(lat = 31.506109831, lng = 34.643250554) {
             })
             console.log('Map!', gMap);
         })
-
 }
 
 function addMarker(loc) {
