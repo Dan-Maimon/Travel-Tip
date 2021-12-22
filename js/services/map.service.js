@@ -11,16 +11,28 @@ export const mapService = {
 let gMap;
 
 function clickMap() {
-    let myLatlng;
-    gMap.addListener('click', ev => {
-        myLatlng = { lat: ev.latLng.lat(), lng: ev.latLng.lng() }
-    })
-    console.log(myLatlng);
-    // let infoWindow = new google.maps.InfoWindow({
-    //     content: "Click the map to get Lat/Lng!",
-    //     position: myLatlng,
-    //   });
-    //   infoWindow.open(gMap);
+    const myLatlng = { lat: -25.363, lng: 131.044 };
+    
+    // Create the initial InfoWindow.
+    let infoWindow = new google.maps.InfoWindow({
+        content: "Click the map to get Lat/Lng!",
+        position: myLatlng,
+    });
+
+    infoWindow.open(gMap);
+    // Configure the click listener.
+    gMap.addListener("click", (mapsMouseEvent) => {
+        // Close the current InfoWindow.
+        infoWindow.close();
+        // Create a new InfoWindow.
+        infoWindow = new google.maps.InfoWindow({
+            position: mapsMouseEvent.latLng,
+        });
+        infoWindow.setContent(
+            JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+        );
+        infoWindow.open(gMap);
+    });
 }
 
 function initMap(lat = 31.506109831, lng = 34.643250554) {
