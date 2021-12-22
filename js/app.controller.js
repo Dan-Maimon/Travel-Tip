@@ -8,6 +8,7 @@ window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
 window.onMarkLoc = onMarkLoc;
 window.onEnterLoc = onEnterLoc;
+window.onGoTo = onGoTo;
 
 function onInit() {
     mapService.initMap()
@@ -90,8 +91,23 @@ function renderLocs(locs) {
                     <td>${createdAt}</td>
                     <td>${updatedAt}</td>
                     <td><input type="checkbox" onchange="onMarkLoc(${loc.id}, checked)"></td>
+                    <td><button onclick="onGoTo(${loc.id})">Go</button></td>
                 </tr>
         `)
     })
     document.querySelector('.locs-container').innerHTML = strHTMLs.join('')
+}
+
+function onGoTo(id) {
+    console.log('loc:', id);
+    locService.getLocs()
+        .then(locs => {
+            const pos = {
+                lat: locs[id-1].lat,
+                lng: locs[id-1].lng
+            }
+            return Promise.resolve(pos)
+        })
+        // .then(pos => {console.log(pos)})
+        .then(pos=> {mapService.panTo(pos.lat, pos.lng)})
 }
