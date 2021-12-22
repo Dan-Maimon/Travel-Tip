@@ -36,7 +36,7 @@ function onGetLocs() {
     locService.getLocs()
         .then(locs => {
             console.log('Locations:', locs)
-            document.querySelector('.locs').innerText = JSON.stringify(locs)
+            renderLocs(locs)
         })
 }
 
@@ -59,7 +59,9 @@ function onPanTo() {
     mapService.panTo(35.6895, 139.6917);
 }
 
-function renderLocations(locs) {
+function renderLocs(locs) {
+    console.log('I am workong');
+    console.log(locs);
     const strHTMLs = [];
     locs.map(loc => {
         strHTMLs.push(`
