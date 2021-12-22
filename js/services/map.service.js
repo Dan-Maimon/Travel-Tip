@@ -3,10 +3,15 @@
 export const mapService = {
     initMap,
     addMarker,
-    panTo
+    panTo,
+    clickMap
 }
 
 var gMap;
+
+function clickMap(){
+    console.log('gMap:', gMap);
+}
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
