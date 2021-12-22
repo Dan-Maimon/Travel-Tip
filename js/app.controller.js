@@ -6,7 +6,6 @@ window.onAddMarker = onAddMarker;
 window.onPanTo = onPanTo;
 window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
-window.onClickMap = onClickMap;
 
 function onInit() {
     mapService.initMap()
@@ -16,9 +15,6 @@ function onInit() {
         .catch(() => console.log('Error: cannot init map'));
 }
 
-function onClickMap() {
-    mapService.setClickPos()
-}
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
 function getPosition() {
