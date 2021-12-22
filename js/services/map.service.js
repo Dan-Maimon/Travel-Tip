@@ -18,30 +18,27 @@ function clickMap() {
 }
 
 function ToggleInfoWindow(location) {
-    const myLatlng = location;
-
-
     // Create the initial InfoWindow.
-    // let infoWindow = new google.maps.InfoWindow({
-    //     content: "Click the map to get Lat/Lng!",
-    //     position: myLatlng,
+    let infoWindow = new google.maps.InfoWindow({
+        content:  JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2),
+        position: location,
+    });
+    
+    // infoWindow.open(gMap);
+    // // Configure the click listener.
+    // gMap.addListener("click", (mapsMouseEvent) => {
+    //     // Close the current InfoWindow.
+    //     infoWindow.close();
+    //     // Create a new InfoWindow.
+    //     infoWindow = new google.maps.InfoWindow({
+    //         position: location,
+    //     });
+    //     infoWindow.setContent(
+    //         JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+    //     );
+    //     infoWindow.open(gMap);
     // });
 
-    infoWindow.open(gMap);
-    // Configure the click listener.
-    gMap.addListener("click", (mapsMouseEvent) => {
-        // Close the current InfoWindow.
-        // Create a new InfoWindow.
-        infoWindow = new google.maps.InfoWindow({
-            position: myLatlng,
-        });
-        infoWindow.setContent(
-            JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
-            );
-            infoWindow.open(gMap);
-
-            // infoWindow.close();
-    });
 }
 
 function initMap(lat = 31.506109831, lng = 34.643250554) {
