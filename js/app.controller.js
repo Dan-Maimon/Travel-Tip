@@ -6,6 +6,12 @@ window.onAddMarker = onAddMarker;
 window.onPanTo = onPanTo;
 window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
+window.onClickMap = onClickMap;
+
+
+function onClickMap() {
+    mapService.clickMap();
+}
 
 function onInit() {
     mapService.initMap()
