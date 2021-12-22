@@ -1,5 +1,7 @@
 export const locService = {
-    getLocs
+    getLocs,
+    convertTime,
+    enterLoc
 }
 
 let gNextid = 1
@@ -26,6 +28,10 @@ const locs = [
 
 ]
 
+function enterLoc(locName, locPos) {
+    
+}
+
 function getLocs() {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -33,12 +39,13 @@ function getLocs() {
         }, 0)
     });
 }
-convertTime(locs[0].createdAt);
+
+
 function convertTime(timestamp) {
     const date = new Date(timestamp)
-    console.log(date);
-    const day = date.getDay()
-    const month = date.getDate() + 1
+    const day = date.getDate()
+    const month = date.getMonth() + 1
     const year = date.getFullYear()
-    console.log(day, month, year);
+    if (!timestamp) return `No updates`
+    return `${day}-${month}-${year}`
 }
