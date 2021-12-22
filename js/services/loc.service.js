@@ -30,9 +30,3 @@ function getLocs() {
         }, 2000)
     });
 }
-
-function getLocs() {
-    return 
-}
-
-
