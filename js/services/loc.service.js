@@ -31,8 +31,3 @@ function getLocs() {
     });
 }
 
-function getLocs() {
-    return 
-}
-
-
