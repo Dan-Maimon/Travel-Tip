@@ -61,12 +61,18 @@ function onPanTo() {
     mapService.panTo(35.6895, 139.6917);
 }
 
-function onMarkLoc(locId,val) {
+function onMarkLoc(locId, val) {
     locService.getLocs()
         .then(locs => {
-            mapService.setMarker(locId,val,locs)
+            mapService.setMarker(locId, val, locs)
         })
-    
+}
+
+function onEnterLoc() {
+    const currLoc = mapService.getCurrClickedPos()
+    const locName = prompt('Enter a name please')
+    locService.enterLoc(locName, currLoc)
+
 }
 
 function renderLocs(locs) {

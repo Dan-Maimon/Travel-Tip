@@ -4,11 +4,16 @@ export const mapService = {
     initMap,
     addMarker,
     panTo,
-    setMarker
+    setMarker,
+    getCurrClickedPos
 }
 
 var gMap;
 var gCurrPos = {}
+
+function getCurrClickedPos() {
+    return gCurrPos
+}
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     return _connectGoogleApi()

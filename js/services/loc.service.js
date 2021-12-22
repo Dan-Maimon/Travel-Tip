@@ -31,7 +31,7 @@ const locs = [
 ]
 
 function enterLoc(locName, locPos) {
-    
+    console.log(locName, locPos);
 }
 
 function getLocs() {
