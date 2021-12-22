@@ -9,7 +9,7 @@ export const locService = {
 const STORAGE_KEY = 'locsDB'
 
 let gNextid = 1
-let gLocs = []
+var gLocs = []
 
 
 function createLoc(locName, pos) {
