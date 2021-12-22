@@ -61,7 +61,11 @@ function onPanTo() {
 }
 
 function onMarkLoc(locId,val) {
-    mapService.setMarker(locId,val)
+    locService.getLocs()
+        .then(locs => {
+            mapService.setMarker(locId,val,locs)
+        })
+    
 }
 
 function renderLocs(locs) {

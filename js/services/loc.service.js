@@ -12,7 +12,8 @@ const locs = [
         lng: 34.832384,
         wheater: null,
         createdAt: Date.now(),
-        updatedAt: null
+        updatedAt: null,
+        marker: null
     },
     {
         id: gNextid++,
@@ -21,7 +22,8 @@ const locs = [
         lng: 34.113354,
         wheater: null,
         createdAt: Date.now(),
-        updatedAt: null
+        updatedAt: null,
+        marker: null
     }
 
 ]

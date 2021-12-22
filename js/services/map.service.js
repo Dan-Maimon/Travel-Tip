@@ -4,6 +4,7 @@ export const mapService = {
     initMap,
     addMarker,
     panTo,
+    setMarker
 }
 
 var gMap;
@@ -69,7 +70,16 @@ function _connectGoogleApi() {
         elGoogleApi.onerror = () => reject('Google script failed to load')
     })
 }
+// setMarker
+function setMarker(id, val, locs) {
+    if (val) {
+        const currLoc = { lat: locs[id - 1].lat, lng: locs[id - 1].lng };
+        locs[id-1].marker = addMarker(currLoc);
+    } else {
+        locs[id-1].marker.setMap(null);
+    }
 
-function setMarker(id, val){
-    
+
+
+
 }
