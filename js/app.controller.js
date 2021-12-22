@@ -29,6 +29,7 @@ function onAddMarker() {
     console.log('Adding a marker');
 
     mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 });
+
 }
 
 function onGetLocs() {
@@ -44,6 +45,7 @@ function onGetUserPos() {
     getPosition()
         .then(pos => {
             console.log('User position is:', pos.coords);
+            mapService.panTo(pos.coords.latitude, pos.coords.longitude)
             document.querySelector('.user-pos').innerText =
                 `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
         })
