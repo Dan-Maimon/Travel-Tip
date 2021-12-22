@@ -33,7 +33,7 @@ function enterLoc(locName, locPos) {
 }
 
 function getLocs() {
-    if (!gLocs.length) storageSrvice.load(STORAGE_KEY)
+    if (!gLocs.length) gLocs = storageSrvice.load(STORAGE_KEY)
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(gLocs);
