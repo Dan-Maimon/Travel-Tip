@@ -8,8 +8,14 @@ window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
 window.onClickMap = onClickMap;
 
+<<<<<<< HEAD
 function onClickMap(){
     mapService.clickMap()
+=======
+
+function onClickMap() {
+    mapService.clickMap();
+>>>>>>> 60002b5084c6d6ebc519a9721bd2cce84ed6adf7
 }
 
 function onInit() {
