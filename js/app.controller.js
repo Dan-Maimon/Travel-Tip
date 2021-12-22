@@ -36,7 +36,7 @@ function onGetLocs() {
     locService.getLocs()
         .then(locs => {
             console.log('Locations:', locs)
-            renderLocs()
+            renderLocs(locs)
         })
 }
 
@@ -60,6 +60,8 @@ function onPanTo() {
 }
 
 function renderLocs(locs) {
+    console.log('I am workong');
+    console.log(locs);
     const strHTMLs = [];
     locs.map(loc => {
         strHTMLs.push(`
