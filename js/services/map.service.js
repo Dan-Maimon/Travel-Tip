@@ -9,10 +9,38 @@ export const mapService = {
 
 var gMap;
 
-function clickMap(){
-    console.log('gMap:', gMap);
-    console.log();
-    
+function clickMap() {
+    gMap.addListener("click", ev => {
+        const clickedPos = { lat: ev.latLng.lat(), lng: ev.latLng.lng() }
+        ToggleInfoWindow(clickedPos)
+    })
+}
+
+function ToggleInfoWindow(location) {
+    const myLatlng = location;
+
+
+    // Create the initial InfoWindow.
+    // let infoWindow = new google.maps.InfoWindow({
+    //     content: "Click the map to get Lat/Lng!",
+    //     position: myLatlng,
+    // });
+
+    infoWindow.open(gMap);
+    // Configure the click listener.
+    gMap.addListener("click", (mapsMouseEvent) => {
+        // Close the current InfoWindow.
+        // Create a new InfoWindow.
+        infoWindow = new google.maps.InfoWindow({
+            position: myLatlng,
+        });
+        infoWindow.setContent(
+            JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
+            );
+            infoWindow.open(gMap);
+
+            // infoWindow.close();
+    });
 }
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
